@@ -1,7 +1,9 @@
 # 🩺 Pneumonia Detection using Transfer Learning (CNN)
 
 ## 📌 Overview
-This project focuses on detecting pneumonia from chest X-ray images using deep learning. It implements a complete pipeline for medical image classification using Convolutional Neural Networks (CNNs) and transfer learning.
+This project implements a deep learning pipeline to detect pneumonia from chest X-ray images using Convolutional Neural Networks and transfer learning.
+
+It focuses on comparing multiple architectures and optimizing performance through fine-tuning and data augmentation.
 
 ---
 
@@ -21,31 +23,33 @@ This project focuses on detecting pneumonia from chest X-ray images using deep l
 
 ## ⚙️ Approach
 - Transfer Learning using pre-trained CNN models  
-- Comparison of:
-  - Feature Extraction (frozen layers)  
-  - Fine-Tuning (unfreezing top layers)  
-- Data Augmentation for improved generalization  
+- Feature Extraction vs Fine-Tuning comparison  
+- Data Augmentation to improve generalization  
 - Batch Normalization and Dropout for regularization  
 
 ---
 
-## 📊 Results
-
-### 🔹 Initial Results (Before Optimization)
-- Accuracy: ~85%  
-- Observed instability in deeper architectures  
-
-### 🔹 Final Model Performance
+## 🏆 Final Model Performance
 - **Validation Accuracy:** 96.5%  
-- **Recall:** ~99% (high sensitivity for pneumonia detection)  
+- **Recall:** ~99%  
+- High sensitivity for pneumonia detection  
 
 ---
 
-## 🏆 Key Insights
+## 📊 Model Comparison (Initial Results)
+| Model        | Approach                     | Accuracy |
+|-------------|-----------------------------|----------|
+| VGG16       | Feature Extraction           | ~85%     |
+| DenseNet121 | Fine-Tuning                 | ~85%     |
+| ResNet50    | Fine-Tuning                 | ~63%     |
+
+---
+
+## 🔍 Key Insights
 - Fine-tuning significantly improved performance over static feature extraction  
-- Data augmentation helped reduce overfitting  
-- Learning rate tuning stabilized training and improved convergence  
-- DenseNet121 provided better generalization compared to VGG16  
+- Learning rate tuning reduced training instability  
+- Data augmentation improved generalization  
+- DenseNet121 showed strong robustness  
 
 ---
 
@@ -55,21 +59,21 @@ This project focuses on detecting pneumonia from chest X-ray images using deep l
 ---
 
 ## ▶️ How to Run
-1. Install required libraries  
+1. Install dependencies  
 2. Load dataset  
-3. Run training notebook/script  
+3. Run notebook  
 
 ---
 
 ## 🎯 Objective
-To build an accurate and reliable deep learning model for early detection of pneumonia using medical imaging.
+To build a reliable deep learning model for early detection of pneumonia from medical images.
 
 ---
 
 ## 📌 Future Improvements
 - Deploy as a web application  
-- Use advanced architectures (EfficientNet, ensembles)  
-- Improve explainability using Grad-CAM  
+- Use EfficientNet / ensemble models  
+- Add explainability (Grad-CAM)  
 
 ---
 
