@@ -1,46 +1,77 @@
-# Pneumonia Detection using Deep Transfer Learning
+# 🩺 Pneumonia Detection using Transfer Learning (CNN)
 
-This project evaluates three Deep Learning architectures—**VGG16, ResNet50, and DenseNet121**—for the binary classification of Pneumonia from Chest X-Ray images. The study focuses on comparing the efficiency of **Static Feature Extraction** versus **Two-Phase Fine-Tuning**.
+## 📌 Overview
+This project focuses on detecting pneumonia from chest X-ray images using deep learning. It implements a complete pipeline for medical image classification using Convolutional Neural Networks (CNNs) and transfer learning.
 
-## 🚀 Key Results
-| Model | Training Strategy | Accuracy | Recall | Key Insight |
-| :--- | :--- | :--- | :--- | :--- |
-| **VGG16** | Frozen Base (Feature Extraction) | **85%** | **96%** | High efficiency, low training cost. |
-| **DenseNet121** | Fine-Tuned (Unfrozen Top 30) | **85%** | **96%** | Robust to image variations due to heavy augmentation. |
-| **ResNet50** | Fine-Tuned (Unfrozen Top 100) | ~63% | - | Suffered from optimization instability. |
+---
 
-## 🛠️ Model Configurations
+## 🚀 Tech Stack
+- Python  
+- TensorFlow / Keras  
+- NumPy, Matplotlib  
 
-All models were implemented using **TensorFlow/Keras**.
+---
 
-### 1. Global Settings
-* **Input Shape:** `(224, 224, 3)`
-* **Batch Size:** 32
-* **Optimizer:** Adam
-* **Loss Function:** Binary Crossentropy
-* **Metrics:** Accuracy, Recall, AUC
+## 🧠 Models Implemented
+- VGG16  
+- ResNet50  
+- DenseNet121  
 
-### 2. Architecture-Specific Configs
+---
 
-#### **VGG16 (The "Frozen" Model)**
-* **Base:** VGG16 (ImageNet weights), non-trainable.
-* **Head:** `Flatten` $\rightarrow$ `Dense(256, ReLU)` $\rightarrow$ `BatchNormalization` $\rightarrow$ `Dropout(0.5)` $\rightarrow$ `Output(Sigmoid)`.
-* **Learning Rate:** $10^{-4}$
+## ⚙️ Approach
+- Transfer Learning using pre-trained CNN models  
+- Comparison of:
+  - Feature Extraction (frozen layers)  
+  - Fine-Tuning (unfreezing top layers)  
+- Data Augmentation for improved generalization  
+- Batch Normalization and Dropout for regularization  
 
-#### **DenseNet121 (The "Robust" Model)**
-* **Base:** DenseNet121 (ImageNet weights).
-* **Training Strategy:** 2-Phase Training.
-    * *Phase 1:* Train Head only.
-    * *Phase 2:* Unfreeze top 30 layers.
-* **Head:** `GlobalAveragePooling` $\rightarrow$ `Dense(128, ReLU)` $\rightarrow$ `Dropout(0.5)`.
-* **Augmentation:** Rotation (15°), Zoom (15%), Width/Height Shift, Shear, Brightness.
+---
 
-## 📦 Requirements
-To run this project, you will need the following libraries:
-```python
-tensorflow
-numpy
-pandas
-matplotlib
-seaborn
-scikit-learn
+## 📊 Results
+
+### 🔹 Initial Results (Before Optimization)
+- Accuracy: ~85%  
+- Observed instability in deeper architectures  
+
+### 🔹 Final Model Performance
+- **Validation Accuracy:** 96.5%  
+- **Recall:** ~99% (high sensitivity for pneumonia detection)  
+
+---
+
+## 🏆 Key Insights
+- Fine-tuning significantly improved performance over static feature extraction  
+- Data augmentation helped reduce overfitting  
+- Learning rate tuning stabilized training and improved convergence  
+- DenseNet121 provided better generalization compared to VGG16  
+
+---
+
+## 📁 Dataset
+- Chest X-ray dataset (Kaggle Pneumonia Dataset)
+
+---
+
+## ▶️ How to Run
+1. Install required libraries  
+2. Load dataset  
+3. Run training notebook/script  
+
+---
+
+## 🎯 Objective
+To build an accurate and reliable deep learning model for early detection of pneumonia using medical imaging.
+
+---
+
+## 📌 Future Improvements
+- Deploy as a web application  
+- Use advanced architectures (EfficientNet, ensembles)  
+- Improve explainability using Grad-CAM  
+
+---
+
+## 📬 Contact
+- LinkedIn: https://www.linkedin.com/in/ayushman-singh-444902283/
